@@ -1,0 +1,46 @@
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 7rem 0 4rem;
+  }
+
+  .section {
+    padding: 4.5rem 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-title,
+  .page-hero h1 {
+    letter-spacing: -0.045em;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    margin-bottom: 1.8rem;
+  }
+
+  .glass-card .card-body {
+    padding: 1rem;
+  }
+
+  .page-hero {
+    padding: 7rem 0 3rem;
+  }
+
+  .artist-swiper .swiper-slide {
+    width: 82vw;
+  }
+
+  .carousel-controls {
+    margin-top: 1rem;
+  }
+}
+
