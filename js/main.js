@@ -1,4 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const scrollRoot = document.querySelector(".site-shell");
+  const getScrollTop = () => (scrollRoot ? scrollRoot.scrollTop : window.scrollY);
+  const addScrollListener = (handler) => {
+    if (scrollRoot) {
+      scrollRoot.addEventListener("scroll", handler, { passive: true });
+    } else {
+      window.addEventListener("scroll", handler, { passive: true });
+    }
+  };
+
+  const navbar = document.querySelector(".navbar");
+  const syncNavbarState = () => {
+    if (navbar) {
+      navbar.classList.toggle("navbar-scrolled", getScrollTop() > 24);
+    }
+  };
+
+  syncNavbarState();
+  addScrollListener(syncNavbarState);
+
   if (window.AOS) {
     AOS.init({
       duration: 760,
@@ -6,6 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
       once: true,
       offset: 80
     });
+
+    if (scrollRoot && "IntersectionObserver" in window) {
+      const aosObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("aos-animate");
+            aosObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: scrollRoot,
+        threshold: 0.18
+      });
+
+      document.querySelectorAll("[data-aos]").forEach((item) => aosObserver.observe(item));
+    }
   }
 
   if (window.Swiper) {
@@ -68,12 +104,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const topButton = document.querySelector(".back-to-top");
   if (topButton) {
-    window.addEventListener("scroll", () => {
-      topButton.classList.toggle("show", window.scrollY > 620);
+    addScrollListener(() => {
+      topButton.classList.toggle("show", getScrollTop() > 620);
     });
 
     topButton.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (scrollRoot) {
+        scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     });
   }
 
