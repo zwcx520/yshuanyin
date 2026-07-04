@@ -3,6 +3,10 @@
     padding: 1rem 0;
   }
 
+  .navbar-nav {
+    align-items: flex-start !important;
+  }
+
   .hero {
     min-height: 100svh;
     padding: 7rem 0 4rem;
@@ -11,6 +15,46 @@
   .section {
     min-height: 100svh;
     padding: 4.5rem 0;
+  }
+
+  .louver-grid {
+    min-height: auto;
+    flex-direction: column;
+  }
+
+  .louver-panel,
+  .louver-panel:hover,
+  .louver-panel:focus-within {
+    flex: none;
+    min-height: 24rem;
+    transform: none;
+  }
+
+  .louver-copy {
+    max-height: none;
+    margin-top: 1rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .owner-slide {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  .owner-portrait {
+    min-height: 24rem;
+  }
+
+  .owner-controls {
+    position: static;
+    margin: 0 2rem 2rem;
+  }
+
+  .owner-carousel .carousel-indicators {
+    position: static;
+    margin: 0 2rem 1.5rem;
   }
 }
 
@@ -61,6 +105,35 @@
 
   .carousel-controls {
     margin-top: 1rem;
+  }
+
+  .louver-content {
+    padding: 1.35rem;
+  }
+
+  .louver-panel,
+  .leader-card {
+    min-height: 25rem;
+  }
+
+  .owner-slide {
+    padding: 1.25rem;
+  }
+
+  .owner-portrait {
+    min-height: 21rem;
+  }
+
+  .owner-points {
+    grid-template-columns: 1fr;
+  }
+
+  .owner-controls {
+    margin: 0 1.25rem 1.25rem;
+  }
+
+  .owner-carousel .carousel-indicators {
+    margin: 0 1.25rem 1.25rem;
   }
 }
 

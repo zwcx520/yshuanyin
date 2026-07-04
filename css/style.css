@@ -146,19 +146,15 @@ body {
   align-items: center;
   padding: 8rem 0 5rem;
   isolation: isolate;
-  --hero-image: url("https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20music%20company%20concert%20stage%20background%2C%20cinematic%20lights%2C%20premium%20website%20hero%2C%20deep%20blue%20gold%20purple%20atmosphere%2C%20realistic%20wide%20angle&image_size=landscape_16_9");
+  background-size: cover;
+  background-position: center;
 }
 
 .hero::before {
   position: absolute;
   inset: 0;
   content: "";
-  background:
-    radial-gradient(circle at 72% 28%, rgba(216, 180, 106, 0.22), transparent 24rem),
-    linear-gradient(90deg, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.46) 48%, rgba(5, 5, 5, 0.18) 100%),
-    var(--hero-image);
-  background-size: cover;
-  background-position: center;
+  background: transparent;
 }
 
 .hero::after,
@@ -428,11 +424,9 @@ body {
   align-items: center;
   padding: 8.5rem 0 4rem;
   border-bottom: 1px solid var(--line);
-  --page-image: url("https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=premium%20music%20label%20website%20banner%20background%2C%20recording%20studio%20and%20concert%20lights%2C%20dark%20blue%20purple%20gold%20cinematic%2C%20realistic%20wide%20photo&image_size=landscape_16_9");
   background:
     radial-gradient(circle at 76% 30%, rgba(79, 140, 255, 0.24), transparent 24rem),
-    linear-gradient(90deg, rgba(5, 5, 5, 0.76), rgba(5, 5, 5, 0.36)),
-    var(--page-image);
+    linear-gradient(90deg, rgba(5, 5, 5, 0.76), rgba(5, 5, 5, 0.36));
   background-size: cover;
   background-position: center;
   isolation: isolate;
@@ -474,6 +468,300 @@ body {
   border-radius: 50%;
   content: "";
   background: var(--gold);
+}
+
+.louver-grid {
+  display: flex;
+  min-height: 34rem;
+  gap: 0.85rem;
+}
+
+.louver-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  color: var(--text);
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.12), rgba(5, 5, 5, 0.88));
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  isolation: isolate;
+  transition: flex 0.75s ease, transform 0.45s ease, border-color 0.45s ease;
+}
+
+.louver-panel::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  opacity: 0.82;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(216, 180, 106, 0.2), transparent 18rem),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.1), rgba(5, 5, 5, 0.82));
+  transition: opacity 0.45s ease;
+}
+
+.louver-panel:hover,
+.louver-panel:focus-within {
+  flex: 2.65 1 0;
+  transform: translateY(-0.35rem);
+  border-color: rgba(216, 180, 106, 0.48);
+}
+
+.louver-panel:hover::before,
+.louver-panel:focus-within::before {
+  opacity: 0.64;
+}
+
+.louver-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.louver-index {
+  position: absolute;
+  top: 1.4rem;
+  left: 1.4rem;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: clamp(2.8rem, 6vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+
+.louver-title {
+  max-width: 18rem;
+  margin: 0;
+  font-size: clamp(1.45rem, 2.4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.louver-copy {
+  max-width: 32rem;
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(1rem);
+  transition: max-height 0.55s ease, margin 0.45s ease, opacity 0.45s ease, transform 0.45s ease;
+}
+
+.louver-panel:hover .louver-copy,
+.louver-panel:focus-within .louver-copy {
+  max-height: 22rem;
+  margin-top: 1rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.louver-copy p {
+  margin-bottom: 0.7rem;
+}
+
+.louver-copy ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.louver-copy li {
+  margin-bottom: 0.35rem;
+}
+
+.louver-meta {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(216, 180, 106, 0.38);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(5, 5, 5, 0.42);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.leader-card {
+  min-height: 38rem;
+}
+
+.leader-card .louver-content {
+  background: linear-gradient(180deg, transparent 12%, rgba(5, 5, 5, 0.32) 48%, rgba(5, 5, 5, 0.92));
+}
+
+.leader-role {
+  color: var(--gold);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.owner-carousel {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(216, 180, 106, 0.14), transparent 20rem),
+    radial-gradient(circle at 82% 18%, rgba(79, 140, 255, 0.16), transparent 22rem),
+    rgba(255, 255, 255, 0.045);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.owner-carousel::before {
+  position: absolute;
+  inset: 8% 10%;
+  content: "";
+  border: 1px solid rgba(216, 180, 106, 0.18);
+  border-radius: 50%;
+  opacity: 0.75;
+  background:
+    conic-gradient(from 18deg, rgba(216, 180, 106, 0.28), rgba(79, 140, 255, 0.08), rgba(139, 92, 246, 0.18), rgba(216, 180, 106, 0.28));
+  filter: blur(0.5px);
+  animation: ownerRotate 18s linear infinite;
+}
+
+.owner-slide {
+  position: relative;
+  z-index: 1;
+  min-height: 38rem;
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr);
+  gap: 2rem;
+  align-items: center;
+  padding: 3rem;
+}
+
+.owner-portrait {
+  position: relative;
+  min-height: 28rem;
+  border: 1px solid rgba(216, 180, 106, 0.32);
+  border-radius: 1.6rem;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.02), rgba(5, 5, 5, 0.78));
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 1.4rem 4rem rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.owner-badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(216, 180, 106, 0.45);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(5, 5, 5, 0.62);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.owner-content {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.owner-content h3 {
+  margin: 0.35rem 0 1rem;
+  font-size: clamp(2rem, 4vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.owner-content .lead {
+  max-width: 52rem;
+  color: #dddde5;
+}
+
+.owner-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.owner-point {
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.owner-point strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--gold);
+}
+
+.owner-controls {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.owner-control {
+  position: static;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(216, 180, 106, 0.35);
+  border-radius: 50%;
+  color: #111;
+  background: var(--gold);
+  opacity: 1;
+}
+
+.owner-control:hover {
+  background: #f0cf82;
+}
+
+.owner-carousel .carousel-indicators {
+  right: auto;
+  bottom: 2.35rem;
+  left: 2rem;
+  z-index: 2;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.owner-carousel .carousel-indicators [data-bs-target] {
+  width: 2.2rem;
+  height: 0.18rem;
+  border: 0;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.owner-carousel .carousel-indicators .active {
+  background-color: var(--gold);
+}
+
+@keyframes ownerRotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .music-row {
